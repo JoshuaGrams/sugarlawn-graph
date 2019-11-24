@@ -193,7 +193,7 @@ function chart() {
 		return item
 	})
 
-	const width = 600/0.8, height = 600/0.8
+	const width = 650/0.8, height = 650/0.8
 
 	const simulation = d3.forceSimulation(nodes)
 		.force("link", d3.forceLink(links).id(d => d.id))
@@ -216,12 +216,12 @@ function chart() {
 		.attr('orient', "auto")
 		.append('svg:path')
 		.attr('d', 'M 10 4 L 0 0 L 0 8 z')
-		.attr('fill', '#c99')
+		.attr('fill', '#000')
 		.attr('fill-opacity', 0.8)
 		.style('stroke', 'none')
 
 	const link = svg.append('g')
-		.attr('stroke', '#444')
+		.attr('stroke', '#ccc')
 		.attr('stroke-width', 3)
 		.selectAll('line')
 		.data(links)
@@ -242,7 +242,7 @@ function chart() {
 	node.append('title').text(d => d.id)
 
 	const itemGroup = svg.append('g')
-		.attr('stroke', '#c99')
+		.attr('stroke', '#000')
 		.attr('stroke-opacity', 0.8)
 
 	let mx = -1000, my = -1000
@@ -284,7 +284,6 @@ function chart() {
 		let dist = Math.sqrt(dx*dx + dy*dy)
 		if(dist > 2 * R) {
 			let ux = dx / dist, uy = dy / dist
-			d.x1 += ux * R;  d.y1 += uy * R
 			d.x2 -= ux * R;  d.y2 -= uy * R
 		}
 		return d
